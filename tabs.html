@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<style>
+    .catalog__tab {
+        width: 223px;
+        height: 52px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 50px;
+        text-align: center;
+        text-transform: uppercase;
+        border: 1px solid grey;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .catalog__tab_active {
+        background-color: #c70101;
+        color: white;
+    }
+
+    .catalog__content {
+        margin-top: 57px;
+        display: none;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+    }
+
+    .catalog__content_active {
+        display: flex;
+    }
+</style>
+
+
+
+
+
+<body>
+    <div class="catalog__tab catalog__tab_active">Tab1</div>
+    <div class="catalog__tab">Tab2</div>
+    <div class="catalog__tab">Tab3</div>
+
+    /*You may add more tabs and contents, as you wish*/
+
+    <div class="catalog__content catalog__content_active">Content1</div>
+    <div class="catalog__content">Content2</div>
+    <div class="catalog__content">Content3</div>
+
+    
+    <script>
+        let massOftabs = document.querySelectorAll(".catalog__tab"),
+            contents = document.querySelectorAll(".catalog__content");
+
+        massOftabs.forEach((elem, index) => {
+            elem.addEventListener("click", function () {
+                let currentTab = index;
+                massOftabs.forEach((item) =>
+                    item.classList.remove("catalog__tab_active")
+                );
+                massOftabs[currentTab].classList.add("catalog__tab_active");
+
+                contents.forEach((elem) => {
+                    elem.classList.remove("catalog__content_active");
+                    contents[currentTab].classList.add("catalog__content_active");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
